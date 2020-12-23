@@ -1,4 +1,5 @@
-import HomeScreen from "./Components/HomeScreen";
+import React from 'react';
+import HomeScreen from './Components/HomeScreen';
 
 // import React, { useEffect, useState } from "react";
 // import ButtonComponent from "./Components/ButtonComponent";
@@ -50,56 +51,56 @@ import HomeScreen from "./Components/HomeScreen";
 //   margin-top: 0.5rem;
 // `;
 export default function App({ location, history }) {
-  // const [visible, setVisible] = useState(false);
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [phone, setPhone] = useState();
-  // const [ok, setOk] = useState(false);
-  // const [refetch, setRefetch] = useState(false);
+	// const [visible, setVisible] = useState(false);
+	// const [name, setName] = useState("");
+	// const [email, setEmail] = useState("");
+	// const [phone, setPhone] = useState();
+	// const [ok, setOk] = useState(false);
+	// const [refetch, setRefetch] = useState(false);
 
-  // const dispatch = useDispatch();
+	// const dispatch = useDispatch();
 
-  // const contactList = useSelector((state) => state.contactList);
-  // const { loading, error, contacts } = contactList;
+	// const contactList = useSelector((state) => state.contactList);
+	// const { loading, error, contacts } = contactList;
 
-  // const addContact = useSelector((state) => state.addContact);
-  // const { loading: addLoading, error: errorLoading, contact } = addContact;
+	// const addContact = useSelector((state) => state.addContact);
+	// const { loading: addLoading, error: errorLoading, contact } = addContact;
 
-  // console.log(contacts);
+	// console.log(contacts);
 
-  // useEffect(() => {
-  //   dispatch(contactListAction());
-  // }, [dispatch, refetch]);
+	// useEffect(() => {
+	//   dispatch(contactListAction());
+	// }, [dispatch, refetch]);
 
-  // const showModel = () => {
-  //   setVisible(true);
-  //   setOk(false);
-  // };
-  // const handleCancel = () => {
-  //   console.log("Clicked cancel button");
-  //   setVisible(false);
-  // };
-  // const handleOk = () => {
-  //   console.log("OK clicked");
-  //   setOk(true);
-  //   setTimeout(() => {
-  //     setVisible(false);
-  //   }, 2000);
-  //   dispatch(addContactAction(name, email, phone));
-  //   setRefetch(!refetch);
-  // };
+	// const showModel = () => {
+	//   setVisible(true);
+	//   setOk(false);
+	// };
+	// const handleCancel = () => {
+	//   console.log("Clicked cancel button");
+	//   setVisible(false);
+	// };
+	// const handleOk = () => {
+	//   console.log("OK clicked");
+	//   setOk(true);
+	//   setTimeout(() => {
+	//     setVisible(false);
+	//   }, 2000);
+	//   dispatch(addContactAction(name, email, phone));
+	//   setRefetch(!refetch);
+	// };
 
-  // const handleDetails = (id) => {
-  //   //history.push(`/detail/${id}`);
-  //   console.log(id);
-  // };
+	// const handleDetails = (id) => {
+	//   //history.push(`/detail/${id}`);
+	//   console.log(id);
+	// };
 
-  // const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+	// const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-  return (
-    <div className="App">
-      <HomeScreen />
-      {/* <DIVWrapper>
+	return (
+		<div className='App'>
+			<HomeScreen />
+			{/* <DIVWrapper>
         <h1>My Contacts</h1>
         <div
           style={{
@@ -164,10 +165,10 @@ export default function App({ location, history }) {
             <ButtonComponent type="danger">
               <Icon className="fas fa-trash" />
             </ButtonComponent> */}
-      {/* </DIV>
+			{/* </DIV>
           </div>
         )}
       </DIVWrapper> */} */}
-    </div>
-  );
+		</div>
+	);
 }
