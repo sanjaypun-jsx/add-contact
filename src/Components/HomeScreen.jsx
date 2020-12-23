@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from "react";
-import ButtonComponent from "./ButtonComponent";
+import React, { useEffect } from "react";
+//import ButtonComponent from "./ButtonComponent";
 import "../styles.css";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 import styled from "styled-components";
-import Modal from "antd/lib/modal/Modal";
-import { Input } from "antd";
-import { Alert } from "antd";
+//import Modal from "antd/lib/modal/Modal";
+//import { Input } from "antd";
+//import { Alert } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { contactListAction } from "../Actions/contactListAction";
-import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
-import { addContactAction } from "../Actions/addContactAction";
+//import { addContactAction } from "../Actions/addContactAction";
+import Loading from "./Loading";
+import { Alert } from "antd";
 
 const Icon = styled.i`
-  color: white;
+  color: #white;
   font-size: 1rem;
+  padding: 0rem 0.5rem;
+  cursor: pointer;
+  &:hover {
+    color: #e7305b;
+  }
 `;
 const DIV = styled.div`
   display: block;
@@ -26,116 +31,55 @@ const DIVWrapper = styled.div`
 `;
 const PlaceHolder = styled.div`
   padding: 0.3rem 1rem;
-  background-color: #092532;
+  background-color: #e41f7b;
   font-size: 1rem;
   margin: 0.2rem;
   color: white;
-  width: 15rem;
+  width: 20rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
   text-align: left;
   cursor: pointer;
-`;
-const AddIcon = styled.i`
-  color: #ff847c;
-  font-size: 2rem;
-  margin: 0rem 0.5rem;
-  cursor: pointer;
-  transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in-out;
   &:hover {
-    color: #e7305b;
+    transform: scale(1.05);
   }
 `;
-const INPUT = styled(Input)`
-  margin-top: 0.5rem;
-`;
-export default function HomeScreen({ location, history }) {
-  const [visible, setVisible] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState();
-  const [ok, setOk] = useState(false);
-  const [refetch, setRefetch] = useState(false);
+// const AddIcon = styled.i`
+//   color: #ff847c;
+//   font-size: 3rem;
+//   margin: 0rem 2rem;
+//   cursor: pointer;
+//   transition: all 0.2s ease-in;
+//   &:hover {
+//     color: #e7305b;
+//   }
+// `;
 
+export default function HomeScreen({ location, history }) {
   const dispatch = useDispatch();
 
   const contactList = useSelector((state) => state.contactList);
   const { loading, error, contacts } = contactList;
 
   const addContact = useSelector((state) => state.addContact);
-  const { loading: addLoading, error: errorLoading, contact } = addContact;
-
-  console.log(contacts);
+  const { contact } = addContact;
 
   useEffect(() => {
     dispatch(contactListAction());
-  }, [dispatch, refetch]);
-
-  const showModel = () => {
-    setVisible(true);
-    setOk(false);
-  };
-  const handleCancel = () => {
-    console.log("Clicked cancel button");
-    setVisible(false);
-  };
-  const handleOk = () => {
-    console.log("OK clicked");
-    setOk(true);
-    setTimeout(() => {
-      setVisible(false);
-    }, 2000);
-    dispatch(addContactAction(name, email, phone));
-    setRefetch(!refetch);
-  };
+  }, [dispatch, contact]);
 
   const handleDetails = (id) => {
-    //history.push(`/detail/${id}`);
-    console.log(id);
+    history.push(`/details/${id}`);
   };
-
-  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
   return (
     <div className="App">
       <DIVWrapper>
-        <h1>My Contacts</h1>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center"
-          }}
-        >
-          Add Contact
-          <AddIcon onClick={showModel} className="fas fa-plus-circle" />
-        </div>
-        <Modal
-          title="Add Contact"
-          visible={visible}
-          onOk={handleOk}
-          onCancel={handleCancel}
-        >
-          {ok ? <Alert message="Saving Contact..." type="info" /> : null}
-          <INPUT
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <INPUT
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <INPUT
-            type="number"
-            placeholder="Phone"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </Modal>
+        {error ? <Alert type="error" message="Something went wrong!" /> : null}
         {loading ? (
-          <Spin indicator={antIcon} />
+          <Loading />
         ) : (
           <div
             style={{
@@ -145,12 +89,16 @@ export default function HomeScreen({ location, history }) {
             }}
           >
             <DIV>
+              {contacts.length === 0 ? (
+                <h1 style={{ color: "white" }}>Empty Contacts</h1>
+              ) : null}
               {contacts.map((contact) => {
                 return (
                   <PlaceHolder
                     onClick={() => handleDetails(contact.id)}
                     key={contact.id}
                   >
+                    <Icon className="fas fa-user"></Icon>
                     {contact.Name}
                   </PlaceHolder>
                 );

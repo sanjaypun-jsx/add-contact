@@ -5,7 +5,9 @@ import {
   ADD_CONTACT_SUCCESS
 } from "../Constants/addContactConstants";
 
-export const addContactAction = (Name, Email, Phone) => async (dispatch) => {
+export const addContactAction = (Name, Email, Phone, Favourite) => async (
+  dispatch
+) => {
   try {
     dispatch({
       type: ADD_CONTACT_REQUEST
@@ -14,7 +16,8 @@ export const addContactAction = (Name, Email, Phone) => async (dispatch) => {
     const { data } = await axios.post("http://localhost:8080/contacts", {
       Name,
       Email,
-      Phone
+      Phone,
+      Favourite
     });
     dispatch({
       type: ADD_CONTACT_SUCCESS,
