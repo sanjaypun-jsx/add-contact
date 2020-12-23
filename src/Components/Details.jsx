@@ -18,7 +18,7 @@ const Icon = styled.i`
 const PlaceHolder = styled.div`
 	margin-top: 0.5rem;
 	padding: 0.3rem 1rem;
-	background-color: #e41f7b;
+	background-color: #ff4646;
 	font-size: 1rem;
 	color: white;
 	width: 20rem;

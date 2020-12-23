@@ -28,7 +28,7 @@ const DIV = styled.div`
 const DIVWrapper = styled.div`display: block;`;
 const PlaceHolder = styled.div`
 	padding: 0.3rem 1rem;
-	background-color: #e41f7b;
+	background-color: #ff4646;
 	font-size: 1rem;
 	margin: 0.2rem;
 	color: white;
