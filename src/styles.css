@@ -1,4 +1,7 @@
+body {
+  background: #ff8ba0 !important;
+}
 .App {
-  font-family: sans-serif;
+  font-family: Rubik;
   text-align: center;
 }
