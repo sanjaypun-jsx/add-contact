@@ -1,6 +1,7 @@
 {
   "name": "contactlist",
   "version": "1.0.0",
+  "author":"Sanji Pun",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
