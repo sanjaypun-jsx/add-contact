@@ -10,3 +10,7 @@
   "contacts": []
 }`
 
+# Second run add-contact
+1) Clone this repo
+2) Install dependencies `npm install`
+3) Start `npm start`
